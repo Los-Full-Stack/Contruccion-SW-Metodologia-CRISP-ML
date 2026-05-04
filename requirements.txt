@@ -1,5 +1,6 @@
-fastapi
-uvicorn
+streamlit
 joblib
 pandas
-scikit-learn # ¡Muy importante: la misma versión de entrenamiento!
+numpy
+scikit-learn
+openpyxl
