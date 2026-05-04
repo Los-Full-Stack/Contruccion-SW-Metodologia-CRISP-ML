@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: SAT Deserción Estudiantil (MLP)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variables de Color Modernas */
+        :root {
+            --primary-color: #0A2540; 
+            --secondary-color: #0070F3; 
+            --accent-color: #10B981; 
+            --danger-color: #EF4444; 
+            --bg-light: #F8FAFC; 
+            --text-dark: #1E293B;
+            --text-light: #475569;
+            --white: #FFFFFF;
+            --border-radius: 12px;
+        }
+
+        /* Estilos Globales */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--bg-light); color: var(--text-dark); line-height: 1.7; overflow-x: hidden; }
+        h1, h2, h3, h4 { color: var(--primary-color); line-height: 1.3; }
+        p { margin-bottom: 15px; }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+
+        /* Portada / Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #1e3a5f 100%);
+            color: var(--white);
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom: 6px solid var(--secondary-color);
+        }
+        header h1 { color: var(--white); font-size: 2.8rem; margin-bottom: 15px; }
+        header p { font-size: 1.2rem; font-weight: 300; color: #cbd5e1; max-width: 800px; margin: 0 auto 25px; }
+        .tags { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        .tag { background: rgba(255, 255, 255, 0.15); padding: 8px 20px; border-radius: 25px; font-size: 0.95rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(5px); }
+
+        /* Títulos de Sección */
+        .section-title { text-align: center; font-size: 2.2rem; margin: 60px 0 40px; position: relative; }
+        .section-title::after { content: ''; display: block; width: 80px; height: 5px; background: var(--secondary-color); margin: 15px auto 0; border-radius: 3px; }
+
+        /* Tarjetas de Datos Clave (Infografía Numérica) */
+        .key-data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .data-card { background: var(--white); padding: 35px 25px; border-radius: var(--border-radius); box-shadow: 0 10px 25px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s ease; border-top: 5px solid var(--secondary-color); position: relative; overflow: hidden; }
+        .data-card:hover { transform: translateY(-10px); }
+        .data-card i { font-size: 3rem; color: var(--secondary-color); margin-bottom: 20px; }
+        .data-card.alert i { color: var(--danger-color); }
+        .data-card.alert { border-top-color: var(--danger-color); }
+        .data-card h3 { font-size: 2.5rem; margin-bottom: 10px; color: var(--primary-color); }
+        .data-card p { color: var(--text-light); font-size: 1rem; font-weight: 500; }
+
+        /* Layout Alterno para las Fases (Zig-Zag) */
+        .phase-section {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            margin-bottom: 50px;
+            overflow: hidden;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .phase-section.alt { border-left: none; border-right: 5px solid var(--accent-color); }
+        
+        .phase-header { background: #f1f5f9; padding: 25px 40px; border-bottom: 1px solid #e2e8f0; }
+        .phase-header h2 { font-size: 1.8rem; display: flex; align-items: center; gap: 15px; margin: 0; }
+        
+        .phase-body { padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; }
+        .phase-content { flex: 1 1 500px; }
+        .phase-content ul { margin-left: 20px; margin-bottom: 20px; }
+        .phase-content li { margin-bottom: 10px; color: var(--text-light); }
+        .phase-content strong { color: var(--text-dark); }
+        
+        /* Contenedor de Imágenes dentro de las Fases */
+        .phase-visuals { flex: 1 1 400px; display: flex; flex-direction: column; gap: 25px; }
+        .image-card {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        .image-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .image-card img:hover { transform: scale(1.02); }
+        .image-card h4 { font-size: 1.1rem; margin-bottom: 8px; color: var(--primary-color); }
+        .image-card p { font-size: 0.9rem; color: var(--text-light); margin: 0; }
+
+        /* Cajas de Resultados y Alertas */
+        .results-box { background: rgba(16, 185, 129, 0.1); border-left: 5px solid var(--accent-color); padding: 25px; margin: 20px 0; border-radius: 0 8px 8px 0; }
+        .results-box ul { list-style: none; margin: 0; }
+        .results-box li { font-size: 1.1rem; font-weight: 500; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .results-box i { color: var(--accent-color); font-size: 1.2rem; }
+
+        /* Footer */
+        footer { background: var(--primary-color); color: var(--white); text-align: center; padding: 40px 0; margin-top: 60px; }
+        footer a { color: var(--secondary-color); text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; transition: color 0.3s; }
+        footer a:hover { color: #3b82f6; }
+
+        /* Animaciones */
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .phase-body { flex-direction: column; }
+            .phase-visuals { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container fade-in">
+            <h1>Sistema de Alerta Temprana para la Deserción Estudiantil</h1>
+            <p>Implementación de Inteligencia Predictiva Universitaria mediante Perceptrón Multicapa (MLP) basado en la metodología CRISP-ML.</p>
+            <div class="tags">
+                <span class="tag"><i class="fas fa-university"></i> Universidad Continental</span>
+                <span class="tag"><i class="fas fa-calendar-alt"></i> Cusco - 2026</span>
+                <span class="tag"><i class="fas fa-users"></i> Proyecto: Los Full Stack</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="section-title fade-in">Contexto y Magnitud del Problema</h2>
+        <div class="key-data-grid fade-in">
+            <div class="data-card alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>15%</h3>
+                <p>Tasa de deserción detectada en el primer ciclo académico.</p>
+            </div>
+            <div class="data-card">
+                <i class="fas fa-database"></i>
+                <h3>1,150</h3>
+                <p>Registros estudiantiles originales procesados.</p>
+            </div>
+            <div class="data-card">
+                <i class="fas fa-layer-group"></i>
+                <h3>28</h3>
+                <p>Variables distribuidas en 4 dimensiones críticas de análisis.</p>
+            </div>
+            <div class="data-card alert">
+                <i class="fas fa-balance-scale-right"></i>
+                <h3>75% / 25%</h3>
+                <p>Desbalance inicial: 75% permanencia vs 25% riesgo.</p>
+            </div>
+        </div>
+
+        <section class="phase-section fade-in">
+            <div class="phase-header">
+                <h2><i class="fas fa-search-chart"></i> Fases 1 y 2: Comprensión del Negocio y Datos</h2>
+            </div>
+            <div class="phase-body">
+                <div class="phase-content">
+                    <h3>Definición y Hallazgos Iniciales</h3>
+                    <p>El proyecto aborda la problemática como una clasificación binaria para categorizar a los estudiantes en "En Riesgo" o "Sin Riesgo".</p>
+                    <ul>
+                        <li><strong>Análisis de Costos de Error:</strong> El error más crítico es el <em>Falso Negativo</em> (no detectar a un estudiante que va a desertar). Por ello, el <strong>Recall (Sensibilidad)</strong> es nuestro KPI principal.</li>
+                        <li><strong>Dimensiones Analizadas:</strong> Académicas (ICFES), Socioeconómicas (Valor pagado), Psicosociales (Ansiedad/Depresión) y Comportamentales.</li>
+                        <li><strong>Hallazgos:</strong> Se detectó un desbalance del 25% en la clase minoritaria y variables con escalas incompatibles que requerían tratamiento urgente.</li>
+                    </ul>
+                </div>
+                
+                <div class="phase-visuals">
+                    <div class="image-card">
+                        <img src="images/matriz_correlacion.png" alt="Matriz de Correlación">
+                        <h4>Figura 1: Matriz de Correlación</h4>
+                        <p>Evidencia relaciones significativas entre la etiqueta de deserción y variables psicosociales (Ansiedad) y académicas.</p>
+                    </div>
+                    <div class="image-card">
+                        <img src="images/valores_atipicos.png" alt="Detección de Valores Atípicos">
+                        <h4>Figura 2: Valores Atípicos (Outliers)</h4>
+                        <p>Gráfico de cajas detectando perfiles extremos en variables como 'Valor Pagado' (hasta 8.6 millones), justificando la normalización.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="phase-section alt fade-in">
+            <div class="phase-header">
+                <h2><i class="fas fa-cogs"></i> Fase 3: Preparación de Datos (Data Preparation)</h2>
+            </div>
+            <div class="phase-body">
+                <div class="phase-content">
+                    <h3>Tratamiento Estadístico Riguroso</h3>
+                    <p>Para asegurar que la Red Neuronal converja correctamente y no se sesgue, se aplicó un pipeline de transformación:</p>
+                    <ul>
+                        <li><strong>Feature Engineering:</strong> Agrupación de variables de salud mental (Ansiedad/Depresión) para crear perfiles de riesgo consolidados.</li>
+                        <li><strong>Normalización (Z-score):</strong> Uso de <em>StandardScaler</em> para que todas las variables numéricas operen en una escala común (media 0, desviación 1), evitando saturación de gradientes.</li>
+                        <li><strong>Balanceo con SMOTE:</strong> La clase de deserción era minoritaria. Se generaron registros sintéticos para equilibrar la muestra de 284/866 a <strong>866 vs 866 registros (50/50)</strong>.</li>
+                    </ul>
+                    <div class="results-box" style="background: rgba(0, 112, 243, 0.1); border-color: var(--secondary-color);">
+                        <p style="margin:0; font-weight: 600;"><i class="fas fa-check-circle" style="color:var(--secondary-color);"></i> Resultado de Fase 3: Datos 100% íntegros, normalizados y balanceados (Total: 1,732 registros listos para el entrenamiento).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="phase-section fade-in">
+            <div class="phase-header">
+                <h2><i class="fas fa-network-wired"></i> Fase 4: Modelado (Perceptrón Multicapa)</h2>
+            </div>
+            <div class="phase-body">
+                <div class="phase-content">
+                    <h3>Arquitectura y Entrenamiento</h3>
+                    <p>Se implementó un modelo MLPClassifier debido a que el riesgo de abandono involucra variables que no son linealmente separables.</p>
+                    <ul>
+                        <li><strong>Arquitectura:</strong> 64-32-1 (Dos capas ocultas de 64 y 32 neuronas).</li>
+                        <li><strong>Activación:</strong> <em>ReLU</em> para capas internas y <em>Sigmoide</em> para la capa de salida (probabilidad).</li>
+                        <li><strong>Optimización:</strong> Algoritmo Adam, límite de 500 iteraciones.</li>
+                    </ul>
+                    <p>El entrenamiento se realizó con el 80% del dataset balanceado. El modelo alcanzó la convergencia de manera orgánica y estable.</p>
+                </div>
+                
+                <div class="phase-visuals">
+                    <div class="image-card">
+                        <img src="images/mlp_diagrama.svg" alt="Diagrama MLP 64-32-1">
+                        <h4>Arquitectura de Red Neuronal</h4>
+                        <p>Esquema de las capas ocultas y flujo de datos configurados para el SAT.</p>
+                    </div>
+                    <div class="image-card">
+                        <img src="images/curva_aprendizaje.png" alt="Curva de Aprendizaje">
+                        <h4>Figura 3: Curva de Aprendizaje</h4>
+                        <p>Muestra el descenso de la función de pérdida. El modelo logró estabilidad en <strong>244 iteraciones</strong> con una pérdida final de <strong>0.0050</strong>.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="phase-section alt fade-in">
+            <div class="phase-header">
+                <h2><i class="fas fa-chart-line"></i> Fase 5: Evaluación de Resultados</h2>
+            </div>
+            <div class="phase-body">
+                <div class="phase-content">
+                    <h3>Validación del Sistema de Alertas</h3>
+                    <p>La métrica de Exactitud (Accuracy) es engañosa en contextos desbalanceados, por lo que el modelo fue evaluado en base a su capacidad real de detectar riesgo.</p>
+                    
+                    <div class="results-box">
+                        <ul>
+                            <li><i class="fas fa-bullseye"></i> <strong>Recall Crítico: 0.98.</strong> Identifica al 98% de los estudiantes en riesgo real.</li>
+                            <li><i class="fas fa-shield-alt"></i> <strong>Precisión: 0.80.</strong> Las alertas generadas son altamente confiables.</li>
+                            <li><i class="fas fa-balance-scale"></i> <strong>F1-Score: 0.88.</strong> Equilibrio excepcional del algoritmo.</li>
+                        </ul>
+                    </div>
+                    <p>Como se observa en las gráficas adjuntas, el modelo cumple con el objetivo institucional fundamental: evitar a toda costa la omisión de estudiantes vulnerables.</p>
+                </div>
+                
+                <div class="phase-visuals">
+                    <div class="image-card">
+                        <img src="images/matriz_confusion.png" alt="Matriz de Confusión">
+                        <h4>Figura 4: Matriz de Confusión</h4>
+                        <p>Tablero de aciertos: De 175 casos reales de riesgo, el sistema detectó 171. <strong>Solo 4 falsos negativos</strong>.</p>
+                    </div>
+                    <div class="image-card">
+                        <img src="images/curva_pr.png" alt="Curva Precision-Recall">
+                        <h4>Figura 5: Curva Precision-Recall</h4>
+                        <p>Con un <strong>Área (AP) de 0.93</strong>, demuestra una gran robustez incluso al exigirle detectar el 100% de los casos (Recall 1.0).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="phase-section fade-in">
+            <div class="phase-header">
+                <h2><i class="fas fa-rocket"></i> Fase 6: Despliegue y Monitoreo Institucional</h2>
+            </div>
+            <div class="phase-body">
+                <div class="phase-content">
+                    <h3>Protocolo de Acción (Intervención)</h3>
+                    <p>El modelo se ha integrado a una interfaz en Streamlit. Cuando la red neuronal emite una probabilidad <strong>P > 0.7</strong> (Riesgo Muy Alto), se desencadena el siguiente protocolo:</p>
+                    <ul>
+                        <li><strong>Automatización:</strong> Correo de alerta inmediata a Bienestar Universitario y al tutor académico.</li>
+                        <li><strong>Entrevista Prioritaria:</strong> Cita obligatoria con trabajo social en menos de 48 horas.</li>
+                        <li><strong>Derivación Específica:</strong> Asignación a tutorías (si el factor es académico) o referenciación al comité de becas (si el factor es económico).</li>
+                    </ul>
+                    <h3>Mantenimiento Técnico</h3>
+                    <p>Para mitigar la degradación del modelo por <em>Data Drift</em> (cambios en el perfil de ingreso), se establece un re-entrenamiento semestral obligatorio y monitoreo constante a través del Dashboard central.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2>Los Full Stack</h2>
+            <p>Proyecto Construcción de Software - 2026 | Cusco, Perú</p>
+            <a href="https://github.com/Los-Full-Stack/Contruccion-SW-Metodologia-CRISP-ML" target="_blank">
+                <i class="fab fa-github"></i> Ver Código Fuente del Proyecto
+            </a>
+            <br>
+            <a href="https://interfacepy-rtjmmzo9omyuwkznyqw2tk.streamlit.app/" target="_blank" style="color: var(--accent-color);">
+                <i class="fas fa-external-link-alt"></i> Ver Aplicación Web Predictiva
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.12
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in').forEach(elem => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+</body>
+</html>

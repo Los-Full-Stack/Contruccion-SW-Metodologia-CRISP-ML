@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 350" style="font-family: 'Poppins', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    <defs>
+        <!-- Flechas para las conexiones -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#94A3B8" />
+        </marker>
+        <!-- Degradado para la capa de entrada -->
+        <linearGradient id="gradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0A2540;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1e3a5f;stop-opacity:1" />
+        </linearGradient>
+        <!-- Sombra suave para los bloques -->
+        <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+            <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.1"/>
+        </filter>
+    </defs>
+
+    <!-- Fondo de la imagen -->
+    <rect width="100%" height="100%" fill="#ffffff" rx="15"/>
+
+    <!-- Capa de Entrada (28 Variables) -->
+    <rect x="50" y="70" width="170" height="210" rx="12" fill="url(#gradPrimary)" filter="url(#shadow)"/>
+    <!-- Nodos simulados -->
+    <circle cx="135" cy="115" r="14" fill="#ffffff" opacity="0.15"/>
+    <circle cx="135" cy="160" r="14" fill="#ffffff" opacity="0.15"/>
+    <circle cx="135" cy="205" r="14" fill="#ffffff" opacity="0.15"/>
+    <circle cx="135" cy="250" r="4" fill="#ffffff" opacity="0.15"/>
+    <circle cx="135" cy="265" r="4" fill="#ffffff" opacity="0.15"/>
+    
+    <text x="135" y="240" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">Capa de Entrada</text>
+    <text x="135" y="265" font-size="14" fill="#cbd5e1" text-anchor="middle">(28 Variables)</text>
+
+    <!-- Capa Oculta 1 (64 Neuronas) -->
+    <rect x="310" y="45" width="170" height="260" rx="12" fill="#0070F3" filter="url(#shadow)"/>
+    <!-- Nodos simulados -->
+    <circle cx="395" cy="90" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="395" cy="130" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="395" cy="170" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="395" cy="210" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="395" cy="245" r="4" fill="#ffffff" opacity="0.25"/>
+    
+    <text x="395" y="270" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">Capa Oculta 1</text>
+    <text x="395" y="295" font-size="14" fill="#bae6fd" text-anchor="middle">64 Neuronas (ReLU)</text>
+
+    <!-- Capa Oculta 2 (32 Neuronas) -->
+    <rect x="570" y="70" width="170" height="210" rx="12" fill="#0070F3" filter="url(#shadow)"/>
+    <!-- Nodos simulados -->
+    <circle cx="655" cy="115" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="655" cy="160" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="655" cy="205" r="12" fill="#ffffff" opacity="0.25"/>
+    <circle cx="655" cy="240" r="4" fill="#ffffff" opacity="0.25"/>
+    
+    <text x="655" y="240" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">Capa Oculta 2</text>
+    <text x="655" y="265" font-size="14" fill="#bae6fd" text-anchor="middle">32 Neuronas (ReLU)</text>
+
+    <!-- Capa de Salida (1 Probabilidad) -->
+    <rect x="830" y="105" width="100" height="140" rx="12" fill="#10B981" filter="url(#shadow)"/>
+    <!-- Nodo único de salida -->
+    <circle cx="880" cy="155" r="18" fill="#ffffff" opacity="0.4"/>
+    
+    <text x="880" y="215" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">Salida</text>
+    <text x="880" y="235" font-size="13" fill="#d1fae5" text-anchor="middle">1 (Sigmoide)</text>
+
+    <!-- Conexiones (Flechas) -->
+    <line x1="220" y1="175" x2="300" y2="175" stroke="#94A3B8" stroke-width="4" marker-end="url(#arrow)"/>
+    <line x1="480" y1="175" x2="560" y2="175" stroke="#94A3B8" stroke-width="4" marker-end="url(#arrow)"/>
+    <line x1="740" y1="175" x2="820" y2="175" stroke="#94A3B8" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>
