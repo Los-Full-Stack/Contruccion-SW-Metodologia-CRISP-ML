@@ -2,4 +2,4 @@ fastapi
 uvicorn
 joblib
 pandas
-scikit-learn==1.x.x  # ¡Muy importante: la misma versión de entrenamiento!
+scikit-learn # ¡Muy importante: la misma versión de entrenamiento!
